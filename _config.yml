@@ -1,6 +1,6 @@
 # Site settings
-title: Hux Blog
-SEOTitle: 黄玄的博客 | Hux Blog
+title: Aaron Blog
+SEOTitle: Aaron的博客 | Aaron Blog
 header-img: img/home-bg.jpg
 email: huxpro@gmail.com
 description: "关于程序与设计、黑客与画家 | 黄玄，Web & Mobile Lover，Software Engineer，UX Designer | 这里是 @Hux黄玄 的个人博客，与你一起发现更大的世界。"
@@ -39,7 +39,12 @@ anchorjs: true                          # if you want to customize anchor. check
 # make sure you have this gem installed
 # `$ gem install jekyll-paginate`
 plugins: [jekyll-paginate]
+gems: [jekyll-paginate]
 
+# plugins:
+#   - jekyll-feed
+#   - jekyll-sitemap
+#   - jekyll-seo-tag
 
 
 # Markdown settings
