@@ -73,13 +73,13 @@ netease_comment: false
 
 # Analytics settings
 # Baidu Analytics 
- ba_track_id: [4271ed6948812672fbe5960361bfd25e]
+#  ba_track_id: [4271ed6948812672fbe5960361bfd25e]
 
 
 
 # Google Analytics
-# ga_track_id: 'UA'            # Format: UA-xxxxxx-xx
-# ga_domain: aaaa
+ga_track_id: 'UA-221035997-1'            # Format: UA-xxxxxx-xx
+ga_domain: https://dr-aaron.github.io/
 
 
 
