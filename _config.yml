@@ -3,8 +3,8 @@ title: Aaron Blog
 SEOTitle: 似同的博客 | Aaron Blog
 header-img: img/home-bg.jpg
 email: amoschen100@gmail.com
-description: "关于程序与设计、黑客与画家 | 黄玄，Web & Mobile Lover，Software Engineer，UX Designer | 这里是 @Hux黄玄 的个人博客，与你一起发现更大的世界。"
-keyword: "黄玄, Hux黄玄, Hux, 鬼栈, huxpro, @huxpro, 黄玄的博客, Hux Blog, 博客, 个人网站, 互联网, Web, JavaScript, 前端, 设计"
+description: "持续好奇，学无边界。/； | Aaron 似同，，Product Manager，Data Scientist | 这里是 @Aaron 似同 的个人博客，共同发现宇宙真理。"
+keyword: "似同, Aaron 似同, Aaron, 冼然, @李似同, Aaron Chen的博客, Aaron Blog, 博客, 科技, 互联网, 产品, 数据科学, 深度学习, 行业研究"
 url: "https://dr-aaron.github.io/"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 
@@ -85,7 +85,7 @@ ga_domain: https://dr-aaron.github.io/
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "For the next quantum leap<br>离开世界之前，一切都是过程"
+sidebar-about-description: "Grateful experimentalism<br>感恩着的体验派"
 sidebar-avatar: /img/avatar-hux-ny.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
@@ -103,7 +103,7 @@ service-worker: true
 
 
 # MathJax rendering for layout:page (e.g. post preview)
-page-mathjax: false
+page-mathjax: true
 
 
 
@@ -113,31 +113,7 @@ friends: [
     #     title: "Su",
     #     href: "http://su.gallery/"
     # },{
-        title: "乱序",
-        href: "http://mida.re/"
-    },{
-        title: "Sherry Wu",
-        href: "https://xuechundesign.github.io"
-    },{
-        title: "Luke 的自留地",
-        href: "http://hmqk1995.github.io"
-    },{
-        title: "Ebn's Blog",
-        href: "http://ebnbin.com/"
-    },{
-        title: "SmdCn's Blog",
-        href: "http://blog.smdcn.net"
-    },{
-        title: "JiyinYiyong",
-        href: "http://tiye.me/"
-    },{
-        title: "David's Game",
-        href: "https://www.ruoyaowu.com/"
-    },{
-        title: "DHong Say",
-        href: "http://dhong.co"
-    },{
-        title: "尹峰以为",
-        href: "http://ingf.github.io/"
+    #     title: "乱序",
+    #     href: "http://mida.re/"
     }
 ]
