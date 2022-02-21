@@ -1,0 +1,265 @@
+I"U*<h2 id="text-analytics">Text Analytics</h2>
+
+<h3 id="text-data-and-applications">Text Data and Applications</h3>
+
+<p>Text Analytics：</p>
+
+<ul>
+  <li>Clustering(聚类)
+    <ul>
+      <li>Grouping documents based on their hidden topics</li>
+    </ul>
+  </li>
+  <li>Classification(分类)
+    <ul>
+      <li>Spam email detection based on email content\</li>
+    </ul>
+  </li>
+  <li>Sentiment analysis
+    <ul>
+      <li>It extracts social sentiment from a document (positive, negative, neutral)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Characteristics of Text Data</p>
+
+<ul>
+  <li>Different types: characters, numbers, punctuations</li>
+  <li>High-fequency words: a, the, in. To, is</li>
+  <li>Different  forms of words</li>
+</ul>
+
+<h3 id="feature-extraction-特征提取">Feature Extraction (特征提取)</h3>
+
+<p><strong>Feature extraction on text data</strong>: The process of transforming raw data into numerical features that can be processed while preserving the information in the orginal data set</p>
+
+<p><strong>After Feature Extraction</strong>: feed the extracted features into data analytical methods</p>
+
+<p><strong>Tokenization</strong>(标记化/词汇切分): 1, convert the text into a sequence of tokens(words/terms) 2, Observation meaningless or meaningful</p>
+
+<p><img src="https://raw.githubusercontent.com/Dr-Aaron/forpic/master/uPic/image-20220207112726279.png" alt="image-20220207112726279" /></p>
+
+<ul>
+  <li>Simple approach: 1,split by spaces. 2, ignore all numbers and punctuation 3, use case-insensitive strings as tokens（空格分隔、不区分标点、不区分大小写）</li>
+  <li><strong>Stopwords</strong>: function words: a, the, in, to. Pronouns  I, he, she, it</li>
+  <li><strong>Stemming</strong>: For matching purpose, convert keywords in the documents to their stems(base word forms)(将词汇转换为基本词干)
+    <ul>
+      <li><strong>Poter Stemmer</strong> : procedure for removing known prefixes/suffixes(删除单词前后缀)</li>
+      <li>For example computer, computational, computation… -&gt;comput</li>
+      <li>Side effects: may produce stems that are not words, or different meaning from the original word;(organization -&gt;organ)</li>
+      <li>（补充：English: NLTK, SpaCy, Stanford…中文：THULAC, FoolNLTK, HanLP, Ictclas, HIT…)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Text Corpus and Vocabulary</p>
+
+<ul>
+  <li>Text corpus: the set of texts used for the task(该任务的语料库), The set of unique words is referred to as the vocabulary.</li>
+</ul>
+
+<p><strong>Bag of Words Model</strong></p>
+
+<p>Convert each document to a bag(multiset) of words/terms. A bag allows multiple occurrence of a term.</p>
+
+<p>Bags(Multiset) of words with Term Frequence.</p>
+
+<p><img src="https://raw.githubusercontent.com/Dr-Aaron/forpic/master/uPic/image-20220209202707642.png" alt="image-20220209202707642" style="zoom:50%;" /></p>
+
+<p>Bag-of-words Model is one Example of Vector Space Model</p>
+
+<ul>
+  <li>After feature extraction,We convert each document to a vector, convert the text corpus to a matrix.(文档转换为向量，语料库转换为矩阵)</li>
+</ul>
+
+<p>Vector space Model</p>
+
+<ul>
+  <li>The vector space model is defined by basis vectors.(向量空间由基向量所定义)
+    <ul>
+      <li>Each term in vocabulary defines a basis vector $T_i$.(每个术语定义了一个基向量)</li>
+      <li>Each basis vector is orthogonal to each other.(每个基向量彼此正交)</li>
+    </ul>
+  </li>
+  <li>Document $D_j$ As T-dimensional vector
+    <ul>
+      <li>t is the size of vocabulary.(t是预处理后保留的术语的数量)</li>
+      <li>$D_j$  = ($w_1j$ , $w_2j$ , $w_3j$ ,  … $w_tj$ , )</li>
+      <li>$w_ij$  denotes the weight of term $T_i$ in a document $D_j$.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com/Dr-Aaron/forpic/master/uPic/image-20220209213500523.png" alt="image-20220209213500523" style="zoom:50%;" /></p>
+
+<p><img src="https://raw.githubusercontent.com/Dr-Aaron/forpic/master/uPic/image-20220209213533055.png" alt="image-20220209213533055" style="zoom:50%;" /></p>
+
+<h3 id="similarity-search">Similarity Search</h3>
+
+<h4 id="cosine-similarity">Cosine Similarity</h4>
+
+<p>With respect to query text: {cheap, quiet, nice, hotel}</p>
+
+<ol>
+  <li>Convert query text to query vector [1, 1, 1, 0, 1]</li>
+</ol>
+
+<p><img src="https://raw.githubusercontent.com/Dr-Aaron/forpic/master/uPic/image-20220209214129073.png" alt="image-20220209214129073" style="zoom:50%;" /></p>
+
+<ol>
+  <li>
+    <p>We need a similarity measure between query and documents</p>
+
+    <p>[1, 1, 1, 0, 1]</p>
+
+    <p><img src="https://raw.githubusercontent.com/Dr-Aaron/forpic/master/uPic/image-20220209214228380.png" alt="image-20220209214228380" style="zoom:50%;" /></p>
+  </li>
+</ol>
+
+<p>Inner Product: 𝐪 ⋅ $𝐱 = 𝑥_1𝑞_1 + ⋯ + 𝑥_𝑛𝑞_𝑛 $</p>
+
+<p>The magnitude/length of a n-dimensional vector $x = [x_1, x_2,…,x_n]$
+\(||x||=\sqrt[]{x_1^2+...x_n^2}\)
+Cosine similarity measures the cosine of the angle between vectors(余弦相似度：向量之间的夹角余弦)
+\(CosSim(q,x)=q\cdot x \over ||q||\ |x||\)
+Inner Product and Cosine Similarity</p>
+
+<ul>
+  <li>
+    <p>Both are defined in the inner product space</p>
+  </li>
+  <li>
+    <p>Cosine similarity only cares about angle difference(余弦相似度只关心角度)</p>
+  </li>
+  <li>
+    <p>Inner product cares about angle and magnitude(内积关注角度和大小)</p>
+  </li>
+</ul>
+
+<h4 id="tf-idf">TF-IDF</h4>
+
+<p>TF-IDF: Determine the importance of a Word, Term Frequency.</p>
+
+<ol>
+  <li>
+    <p>More frequent terms in a document are more important. $tf_{ij} = frequency\  of\  term\ i\ in \ document \ j$</p>
+  </li>
+  <li>
+    <p>Inverse ducument frequency IDF</p>
+
+    <p>Terms that appear in many different documents are less indicative of overall topic in a document.</p>
+
+    <p>$𝑑𝑓_𝑖$ = number of documents containing term 𝑖</p>
+
+    <p>$𝑖𝑑𝑓_𝑖$ = inverse document frequency of term 𝑖</p>
+
+    <p>​        = $log_2(\cfrac N{df_i})$</p>
+  </li>
+</ol>
+
+<p>​	TF-IDF weighting: The combined term importance indicator is called tf-idf weighting:  $w_{ij}=tf_{ij}\cdot idf_i$</p>
+
+<ul>
+  <li>A term has high weight when: <strong>it occurs frequently in the document, but rarely in the rest of the collection.</strong></li>
+</ul>
+
+<p>==Exercise slide53==</p>
+
+<p><img src="https://raw.githubusercontent.com/Dr-Aaron/forpic/master/uPic/image-20220210143256766.png" alt="image-20220210143256766" style="zoom: 50%;" /></p>
+
+<p><img src="https://raw.githubusercontent.com/Dr-Aaron/forpic/master/uPic/image-20220210143328410.png" alt="image-20220210143328410" style="zoom: 50%;" /></p>
+
+<h2 id="unsupervised-algorithms">Unsupervised Algorithms</h2>
+
+<h3 id="clustering">Clustering</h3>
+
+<h4 id="applications-and-concepts">Applications and Concepts</h4>
+
+<p>Clustering is the task of grouping a set of objects in such a way that objects in the same group are more similar(<strong>similarity measures</strong>相似度度量) to each other than to those in other groups(clusters).将对象进行分组，使同一组对象中的相似程度比其他组更高</p>
+
+<p>Clustering is used:</p>
+
+<ul>
+  <li>As a stand-tool to get insight inito data distribution.(集群可视化)</li>
+  <li>As a preprocessing step for other algorithms.(数据清洗和压缩)</li>
+</ul>
+
+<p><strong>Outlier</strong> Analysis by clustering</p>
+
+<ul>
+  <li>Outliers are objects that do not belong to any cluster or form clusters of very small cardinality</li>
+  <li>Distances on numerical values</li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com/Dr-Aaron/forpic/master/uPic/image-20220210151219703.png" alt="image-20220210151219703" style="zoom: 50%;" /></p>
+
+<p><img src="https://raw.githubusercontent.com/Dr-Aaron/forpic/master/uPic/image-20220210151605931.png" alt="image-20220210151605931" style="zoom:50%;" /></p>
+
+<p>Euclidean distance:欧氏距
+\(d(x_i, x_j)= \sqrt[2]{|x_{i1}-x_{j1}|^2+|x_{i2}-x_{j2}|+...+|x_{ip}-x_{jp}|^2}\)</p>
+
+<ul>
+  <li>$d(x_i, x_j)\ge0$  (non-negativity)</li>
+  <li>$d(x_i, x_j)=0$ (coincidence) 契合</li>
+  <li>$d(x_i, x_j)=d(x_j, x_i)$ (symmetry) 对称</li>
+  <li>$d(x_i, x_j)\le d(x_i, x_k)+d(x_k, x_j)$ (triangular inequality)三角不等式</li>
+</ul>
+
+<p>Also one can use <strong>weighted</strong> distance
+\(d(x_i, x_j)= \sqrt[2]{w_1|x_{i1}-x_{j1}|^2+w_2|x_{i2}-x_{j2}|+...+w_p|x_{ip}-x_{jp}|^2}\)
+The centroid or geometric center of a plane figure is the arthmetic mean position of all the points in the shape.平面图形的质心/几何中心是该形状所有点坐标算术平均值位置</p>
+
+<p><img src="https://raw.githubusercontent.com/Dr-Aaron/forpic/master/uPic/image-20220210153456475.png" alt="image-20220210153456475" /></p>
+
+<h4 id="k-means">K-Means</h4>
+
+<p>Partitioning method划分方法：Construct a partition of a database D of objects into a set of k clusters.将数据库D中的N个对象划分为k个集群</p>
+
+<ul>
+  <li>Each cluster is represented by the center of the cluster.</li>
+</ul>
+
+<ol>
+  <li>k initial <strong>random centroids</strong> in the data domain. 初始数据域中的随机质心</li>
+  <li>Assign objects to nearest centroid to from clusters.</li>
+  <li>Update centroids by conputing the mean ofa each cluster.通过计算每个簇的平均值计算质心</li>
+  <li>go to step 2</li>
+</ol>
+
+<p><img src="https://raw.githubusercontent.com/Dr-Aaron/forpic/master/uPic/image-20220210155010107.png" alt="image-20220210155010107" style="zoom:67%;" /></p>
+
+<p>Pseudo-code</p>
+
+<p><img src="https://raw.githubusercontent.com/Dr-Aaron/forpic/master/uPic/image-20220210155208934.png" alt="image-20220210155208934" style="zoom:50%;" /></p>
+
+<p><strong>Strength</strong>: Relatively efficient: O(tkn), wheren is # objects, k is $cluster, and t is #iteration.(对象数量，簇数量， 迭代次数) Normallymk,t«n</p>
+
+<p><strong>Weakness</strong>:</p>
+
+<ul>
+  <li>
+    <p>Applicable only when <em>mean</em> is defined (what about categorical data)?仅在平均数据有效时有用</p>
+  </li>
+  <li>
+    <p>Need to specify <em>k,</em> the <em>number</em> of clusters, in advance需要制定簇的数量</p>
+  </li>
+  <li>
+    <p>Unable to handle noisy data and outliers.无法处理噪声和异常值</p>
+  </li>
+  <li>
+    <p>Not suitable to discover clusters with non-convex shapes.不能判断非凸簇</p>
+  </li>
+</ul>
+
+<p>Distance between clusters</p>
+
+<ul>
+  <li>Single Link: smallest distance between any points in two clusters</li>
+  <li>Complete Link: largest distance between any points in two clusters</li>
+  <li>Centroid: distance between the centroids of two clusters</li>
+  <li>Average Link: average distance of all pairwise points in clusters</li>
+  <li>Average of the distances of the 4*3 pairs of points in the example</li>
+</ul>
+
+:ET
